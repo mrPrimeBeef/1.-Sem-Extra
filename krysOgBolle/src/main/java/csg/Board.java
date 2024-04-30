@@ -1,0 +1,51 @@
+package csg;
+
+import org.abstractica.javacsg.Geometry2D;
+import org.abstractica.javacsg.Geometry3D;
+import org.abstractica.javacsg.JavaCSG;
+
+public class Board {
+    private final double brickSize;
+    private final double height;
+    private final double boardSize;
+
+    public Board(double brickSize, double height) {
+
+        this.brickSize = brickSize;
+        this.height = height;
+        this.boardSize = (brickSize * 3) + (4 * 5);
+        // størrelsen på boardet er 3 brikker og 4 linjer i mellem på 5 mm mellemrum
+    }
+
+    public Geometry3D getBoard(JavaCSG csg) {
+        Geometry3D board = createBoard(csg);
+        return board;
+    }
+
+    public Geometry3D createRow(JavaCSG csg){
+        Geometry3D gameBrick = csg.box3D(brickSize,brickSize,20,false);
+        gameBrick = csg.translate3D(-39,39,6).transform(gameBrick);
+        Geometry3D gameBrick2 = csg.translate3D((brickSize+5),0,0).transform(gameBrick);
+        Geometry3D gameRow = csg.union3D(gameBrick, gameBrick2);
+        Geometry3D gameBrick3 = csg.translate3D((brickSize+5),0,0).transform(gameBrick2);
+        Geometry3D rowFinal = csg.union3D(gameRow, gameBrick3);
+
+        return rowFinal;
+    }
+
+
+    public Geometry3D createBoard(JavaCSG csg) {
+        Geometry3D board = csg.box3D(boardSize,boardSize,height,false);
+
+        Geometry3D row1 = createRow(csg);
+        Geometry3D board1 = csg.difference3D(board, row1);
+
+        Geometry3D row2 = csg.translate3D(0,-(brickSize+5)*1,0).transform(row1);
+        Geometry3D board2 = csg.difference3D(board1, row2);
+
+        Geometry3D row3 = csg.translate3D(0,-(brickSize+5)*2,0).transform(row1);
+        Geometry3D board3 = csg.difference3D(board2, row3);
+
+        return board3;
+    }
+}
