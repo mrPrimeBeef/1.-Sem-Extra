@@ -9,12 +9,11 @@ public class Board {
     private final double height;
     private final double boardSize;
 
-    public Board(double brickSize, double height) {
+    public Board(double brickSize, double height, double boardSize) {
 
         this.brickSize = brickSize;
         this.height = height;
-        this.boardSize = (brickSize * 3) + (4 * 5);
-        // størrelsen på boardet er 3 brikker og 4 linjer i mellem på 5 mm mellemrum
+        this.boardSize = boardSize;
     }
 
     public Geometry3D getBoard(JavaCSG csg) {
@@ -23,14 +22,13 @@ public class Board {
     }
 
     public Geometry3D createRow(JavaCSG csg){
-        Geometry3D gameBrick = csg.box3D(brickSize,brickSize,20,false);
-        gameBrick = csg.translate3D(-39,39,6).transform(gameBrick);
-        Geometry3D gameBrick2 = csg.translate3D((brickSize+5),0,0).transform(gameBrick);
-        Geometry3D gameRow = csg.union3D(gameBrick, gameBrick2);
-        Geometry3D gameBrick3 = csg.translate3D((brickSize+5),0,0).transform(gameBrick2);
-        Geometry3D rowFinal = csg.union3D(gameRow, gameBrick3);
+        Geometry2D circle = csg.circle2D(30,128);
+        Geometry3D extrudCircle = csg.linearExtrude(4,false,circle);
+        Geometry3D extrudCircleMoved = csg.translate3D(-100,40,6.5).transform(extrudCircle);
 
-        return rowFinal;
+        //Geometry3D rowFinal = csg.union3D(gameRow, gameBrick3);
+
+        return extrudCircleMoved;
     }
 
 
@@ -46,6 +44,9 @@ public class Board {
         Geometry3D row3 = csg.translate3D(0,-(brickSize+5)*2,0).transform(row1);
         Geometry3D board3 = csg.difference3D(board2, row3);
 
-        return board3;
+        Geometry3D row4 = csg.translate3D(0,-(brickSize+5)*3,0).transform(row1);
+        Geometry3D finalBoard = csg.difference3D(board3, row4);
+
+        return board1;
     }
 }

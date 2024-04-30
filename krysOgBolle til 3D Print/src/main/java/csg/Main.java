@@ -9,7 +9,7 @@ public class Main {
 
 
         Cross cross = new Cross(30,5,4);
-        Board board = new Board(34,10);
+        Board board = new Board(34,10,5,4);
         Ring ring = new Ring(30,4);
         Geometry3D crossResult = cross.getGeometry(csg);
         Geometry3D boardResult = board.getBoard(csg);
