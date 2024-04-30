@@ -35,8 +35,8 @@ public class SquarePieces {
 
         Geometry3D indentSqaure = csg.difference3D(sqaure,indent);
 
-        Geometry3D hole = csg.flatRing3D(0,8,4,128,false);
-        Geometry3D holeMoved = csg.translate3D(0,0,height-3).transform(hole);
+        Geometry3D hole = csg.flatRing3D(0,18,10,128,false);
+        Geometry3D holeMoved = csg.translate3D(0,0,height-8).transform(hole);
         Geometry3D finalSqaure = csg.difference3D(indentSqaure,holeMoved);
         return finalSqaure;
     }
