@@ -1,0 +1,57 @@
+@startuml
+class Main{
++ static void main(String[] args)
+}
+
+
+class Game{
+ - String name
+ - ArrayList<Player> players
+ - ArrayList<String> listOfActions
+ - Player currentPlayer
+ - TextUI ui
+ - FileIO io
+ - String playerDataPath
+ + Game(String name)
+ + void runDialog()
+ - void createPlayer(String name, int balance)
+  - void displayPlayers()
+  ' new: we will load the data as strings and create player objects from the data in each element
+  - loadPlayerData()
+ ' new: in a turnbased game we would want to create as many players as the game allows
+ - void registerPlayers()
+ 'new: we need a loop to manage each players' turn during the life cycle of the game
+ - void runGameLoop();
+
+}
+
+class Player{
+- String name
+- int balance
++ Player(String name, int startAmount)
++ void deposit(int amount)
++ int getBalance()
++ String toString()
++ String getName()
+
+}
+class FileIO{
++ ArrayList<String> readPlayerData(String path)
++ void saveData(ArrayList<Player> players, String path)
+}
+
+class TextUI{
+- Scanner scanner
++ void displayMsg(String s)
++ int promptNumeric(String msg)
++ String promptText(String msg)
++ int promptChoice(String msg, ArrayList<String> list)
+
+}
+
+Game *-- TextUI
+Main *-- Game
+Game *-- Player
+Game *-- FileIO
+
+@enduml
