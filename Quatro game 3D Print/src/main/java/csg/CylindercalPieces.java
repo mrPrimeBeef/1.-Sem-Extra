@@ -3,51 +3,52 @@ package csg;
 import org.abstractica.javacsg.Geometry3D;
 import org.abstractica.javacsg.JavaCSG;
 
-public class SquarePiece {
+public class CylindercalPieces {
     private final double brickSize;
     private final double height;
     private final double indentHeight;
 
-    public SquarePiece(double brickSize, double height, int indentHeight) {
+    public CylindercalPieces(double brickSize, double height, int indentHeight) {
         this.brickSize = brickSize;
         this.height = height;
         this.indentHeight = indentHeight;
     }
 
-    public Geometry3D getSmallSqaurePieceNohole(JavaCSG csg){
-        return createSqaurePieceNoHole(csg, height);
+    public Geometry3D getSmallCylinderPieceNoHole(JavaCSG csg){
+        return createCylinderPieceNoHole(csg, height);
     }
 
-    public Geometry3D getSmallSqaurePieceHole(JavaCSG csg){
-        return createSqaurePieceHole(csg, this.height);
+    public Geometry3D getSmallCylinderPieceHole(JavaCSG csg){
+        return createCylinderPieceHole(csg, this.height);
     }
 
-    public Geometry3D getBigSqaurePieceNoHole(JavaCSG csg){
-        return createSqaurePieceNoHole(csg,this.height);
+    public Geometry3D getBigCylinderPieceNoHole(JavaCSG csg){
+        return createCylinderPieceNoHole(csg,this.height);
     }
-    public Geometry3D getBigSqaurePieceHole(JavaCSG csg){
-        return createSqaurePieceHole(csg,this.height);
+    public Geometry3D getBigCylinderPieceHole(JavaCSG csg){
+        return createCylinderPieceHole(csg,this.height);
     }
 
-    public Geometry3D createSqaurePieceHole(JavaCSG csg, double height){
-        Geometry3D sqaure = csg.box3D(brickSize,brickSize,height,false);
+    public Geometry3D createCylinderPieceHole(JavaCSG csg, double height){
+        Geometry3D cicleCylinder = csg.cylinder3D(brickSize,height,128,false);
         Geometry3D indent = createIndent(csg);
 
-        Geometry3D indentSqaure = csg.difference3D(sqaure,indent);
+
+        Geometry3D indentCylinder = csg.difference3D(cicleCylinder,indent);
 
         Geometry3D hole = csg.flatRing3D(0,8,4,128,false);
         Geometry3D holeMoved = csg.translate3D(0,0,height-3).transform(hole);
-        Geometry3D finalSqaure = csg.difference3D(indentSqaure,holeMoved);
+        Geometry3D finalSqaure = csg.difference3D(indentCylinder,holeMoved);
         return finalSqaure;
     }
 
 
-    public Geometry3D createSqaurePieceNoHole(JavaCSG csg, double height){
-        Geometry3D sqaure = csg.box3D(brickSize,brickSize,this.height,false);
+    public Geometry3D createCylinderPieceNoHole(JavaCSG csg, double height){
+        Geometry3D cylinderePiece = csg.cylinder3D(brickSize,height,128,false);
         Geometry3D indent = createIndent(csg);
 
-        Geometry3D finalSqaure = csg.difference3D(sqaure,indent);
-        return finalSqaure;
+        Geometry3D finalCylinderPiece = csg.difference3D(cylinderePiece,indent);
+        return finalCylinderPiece;
     }
 
     public Geometry3D createIndent(JavaCSG csg){
