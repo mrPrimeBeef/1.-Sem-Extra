@@ -1,19 +1,243 @@
 difference()
 {
-    linear_extrude(height = 10.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+    difference()
     {
-        scale([200.0, 200.0])
+        difference()
         {
-            M8();
+            difference()
+            {
+                difference()
+                {
+                    linear_extrude(height = 10.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                    {
+                        scale([200.0, 200.0])
+                        {
+                            M8();
+                        }
+                    }
+                    translate([0.0, 0.0, 6.0])
+                    {
+                        linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                        {
+                            difference()
+                            {
+                                scale([190.0, 190.0])
+                                {
+                                    M196();
+                                }
+                                scale([180.0, 180.0])
+                                {
+                                    M196();
+                                }
+                            }
+                        }
+                    }
+                }
+                union()
+                {
+                    union()
+                    {
+                        union()
+                        {
+                            translate([-50.0, 52.0, 6.5])
+                            {
+                                linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                {
+                                    scale([30.0, 30.0])
+                                    {
+                                        M196();
+                                    }
+                                }
+                            }
+                            translate([-17.0, 52.0, 6.5])
+                            {
+                                linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                {
+                                    scale([30.0, 30.0])
+                                    {
+                                        M196();
+                                    }
+                                }
+                            }
+                        }
+                        translate([16.0, 52.0, 6.5])
+                        {
+                            linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                            {
+                                scale([30.0, 30.0])
+                                {
+                                    M196();
+                                }
+                            }
+                        }
+                    }
+                    translate([49.0, 52.0, 6.5])
+                    {
+                        linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                        {
+                            scale([30.0, 30.0])
+                            {
+                                M196();
+                            }
+                        }
+                    }
+                }
+            }
+            translate([0.0, -35.0, 0.0])
+            {
+                union()
+                {
+                    union()
+                    {
+                        union()
+                        {
+                            translate([-50.0, 52.0, 6.5])
+                            {
+                                linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                {
+                                    scale([30.0, 30.0])
+                                    {
+                                        M196();
+                                    }
+                                }
+                            }
+                            translate([-17.0, 52.0, 6.5])
+                            {
+                                linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                {
+                                    scale([30.0, 30.0])
+                                    {
+                                        M196();
+                                    }
+                                }
+                            }
+                        }
+                        translate([16.0, 52.0, 6.5])
+                        {
+                            linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                            {
+                                scale([30.0, 30.0])
+                                {
+                                    M196();
+                                }
+                            }
+                        }
+                    }
+                    translate([49.0, 52.0, 6.5])
+                    {
+                        linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                        {
+                            scale([30.0, 30.0])
+                            {
+                                M196();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        translate([0.0, -70.0, 0.0])
+        {
+            union()
+            {
+                union()
+                {
+                    union()
+                    {
+                        translate([-50.0, 52.0, 6.5])
+                        {
+                            linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                            {
+                                scale([30.0, 30.0])
+                                {
+                                    M196();
+                                }
+                            }
+                        }
+                        translate([-17.0, 52.0, 6.5])
+                        {
+                            linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                            {
+                                scale([30.0, 30.0])
+                                {
+                                    M196();
+                                }
+                            }
+                        }
+                    }
+                    translate([16.0, 52.0, 6.5])
+                    {
+                        linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                        {
+                            scale([30.0, 30.0])
+                            {
+                                M196();
+                            }
+                        }
+                    }
+                }
+                translate([49.0, 52.0, 6.5])
+                {
+                    linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                    {
+                        scale([30.0, 30.0])
+                        {
+                            M196();
+                        }
+                    }
+                }
+            }
         }
     }
-    translate([-100.0, 40.0, 6.5])
+    translate([0.0, -105.0, 0.0])
     {
-        linear_extrude(height = 4.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+        union()
         {
-            scale([30.0, 30.0])
+            union()
             {
-                M196();
+                union()
+                {
+                    translate([-50.0, 52.0, 6.5])
+                    {
+                        linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                        {
+                            scale([30.0, 30.0])
+                            {
+                                M196();
+                            }
+                        }
+                    }
+                    translate([-17.0, 52.0, 6.5])
+                    {
+                        linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                        {
+                            scale([30.0, 30.0])
+                            {
+                                M196();
+                            }
+                        }
+                    }
+                }
+                translate([16.0, 52.0, 6.5])
+                {
+                    linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                    {
+                        scale([30.0, 30.0])
+                        {
+                            M196();
+                        }
+                    }
+                }
+            }
+            translate([49.0, 52.0, 6.5])
+            {
+                linear_extrude(height = 5.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                {
+                    scale([30.0, 30.0])
+                    {
+                        M196();
+                    }
+                }
             }
         }
     }
