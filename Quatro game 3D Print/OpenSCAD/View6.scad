@@ -9,19 +9,22 @@ difference()
                 M196();
             }
         }
-        rotate_extrude(angle = 360.0, $fn = 128)
+        translate([0.0, 0.0, 40.0])
         {
-            translate([15.0, 45.0])
+            rotate_extrude(angle = 360.0, $fn = 128)
             {
-                difference()
+                translate([15.0, 0.0])
                 {
-                    scale([5.0, 5.0])
+                    difference()
                     {
-                        M196();
-                    }
-                    scale([0.0, 0.0])
-                    {
-                        M196();
+                        scale([5.0, 5.0])
+                        {
+                            M196();
+                        }
+                        scale([0.0, 0.0])
+                        {
+                            M196();
+                        }
                     }
                 }
             }

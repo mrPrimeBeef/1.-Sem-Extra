@@ -38,7 +38,11 @@ public class SquarePieces {
         Geometry3D hole = csg.flatRing3D(0,18,10,128,false);
         Geometry3D holeMoved = csg.translate3D(0,0,height-8).transform(hole);
         Geometry3D finalSqaure = csg.difference3D(indentSqaure,holeMoved);
-        return finalSqaure;
+
+        Geometry3D magnet = magnetSpace(csg);
+        Geometry3D finalWMagnet = csg.difference3D(finalSqaure,magnet);
+
+        return finalWMagnet;
     }
 
 
@@ -47,7 +51,11 @@ public class SquarePieces {
         Geometry3D indent = createIndent(csg);
 
         Geometry3D finalSqaure = csg.difference3D(sqaure,indent);
-        return finalSqaure;
+
+        Geometry3D magnet = magnetSpace(csg);
+        Geometry3D finalWMagnet = csg.difference3D(finalSqaure,magnet);
+
+        return finalWMagnet;
     }
 
     public Geometry3D createIndent(JavaCSG csg){
@@ -71,6 +79,13 @@ public class SquarePieces {
         Geometry3D cylinderMerge3 = csg.union3D(cylinderMerge2,cylinderMoved4);
 
         return cylinderMerge3;
+    }
+
+    public Geometry3D magnetSpace(JavaCSG csg){
+        Geometry3D finalMagnet = csg.box3D(4.73,9.77,2.88,false);
+        Geometry3D finalMagnet1 = csg.translate3D(0,0,-0.1).transform(finalMagnet);
+
+        return finalMagnet1;
     }
 
 }

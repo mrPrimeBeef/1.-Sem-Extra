@@ -124,5 +124,12 @@ public class Board {
         return indent4;
     }
 
+    public Geometry3D magnetSpace(JavaCSG csg){
+        Geometry3D finalMagnet = csg.box3D(4.73,9.77,2.88,false);
+        Geometry3D finalMagnet1 = csg.translate3D(0,0,-0.1).transform(finalMagnet);
+
+        return finalMagnet1;
+    }
+
 
 }

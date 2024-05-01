@@ -4,6 +4,8 @@ import org.abstractica.javacsg.Geometry2D;
 import org.abstractica.javacsg.Geometry3D;
 import org.abstractica.javacsg.JavaCSG;
 
+import java.security.PublicKey;
+
 public class cylindricalPieces {
     private final double brickSize;
     private final double height;
@@ -49,17 +51,28 @@ public class cylindricalPieces {
         Geometry3D indent = createIndent(csg);
 
         Geometry3D finalCylinderPiece = csg.difference3D(cylinderePiece,indent);
-        return finalCylinderPiece;
+        Geometry3D magnet = magnetSpace(csg);
+        Geometry3D finalWMagnet = csg.difference3D(finalCylinderPiece,magnet);
+
+        return finalWMagnet;
     }
 
     public Geometry3D createIndent(JavaCSG csg){
         Geometry2D ring = csg.ring2D(0,5,128);
-        Geometry2D ringMoved = csg.translate2D(brickSize/2,5+indentHeight).transform(ring);
+        Geometry2D ringMoved = csg.translate2D(brickSize/2,0).transform(ring);
         Geometry3D ring3D = csg.rotateExtrude(csg.rotations(1),128,ringMoved);
+        Geometry3D ring3DMoved = csg.translate3D(0,0,indentHeight).transform(ring3D);
 
 
 
-        return ring3D;
+        return ring3DMoved;
+    }
+
+    public Geometry3D magnetSpace(JavaCSG csg){
+        Geometry3D finalMagnet = csg.box3D(4.73,9.77,2.88,false);
+        Geometry3D finalMagnet1 = csg.translate3D(0,0,-0.1).transform(finalMagnet);
+
+        return finalMagnet1;
     }
 
 }
