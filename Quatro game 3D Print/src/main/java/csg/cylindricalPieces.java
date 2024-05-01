@@ -1,5 +1,6 @@
 package csg;
 
+import org.abstractica.javacsg.Geometry2D;
 import org.abstractica.javacsg.Geometry3D;
 import org.abstractica.javacsg.JavaCSG;
 
@@ -52,12 +53,13 @@ public class cylindricalPieces {
     }
 
     public Geometry3D createIndent(JavaCSG csg){
-        // Geometry3D sphere = csg.sphere3D(5,128,false);
-        Geometry3D ring = csg.flatRing3D(26,brickSize+2,4,128,false);
-        Geometry3D ringMoved = csg.translate3D(0,0,indentHeight).transform(ring);
+        Geometry2D ring = csg.ring2D(0,5,128);
+        Geometry2D ringMoved = csg.translate2D(brickSize/2,5+indentHeight).transform(ring);
+        Geometry3D ring3D = csg.rotateExtrude(csg.rotations(1),128,ringMoved);
 
 
-        return ringMoved;
+
+        return ring3D;
     }
 
 }
