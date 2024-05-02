@@ -2,24 +2,65 @@ difference()
 {
     difference()
     {
-        union()
+        difference()
         {
-            difference()
+            union()
             {
-                linear_extrude(height = 80.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                difference()
                 {
-                    scale([30.0, 30.0])
+                    linear_extrude(height = 80.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
                     {
-                        M8();
+                        scale([30.0, 30.0])
+                        {
+                            M8();
+                        }
                     }
-                }
-                union()
-                {
                     union()
                     {
                         union()
                         {
-                            translate([-15.0, 15.0, 40.0])
+                            union()
+                            {
+                                translate([-15.0, 15.0, 40.0])
+                                {
+                                    rotate([0.0, 0.0, 0.0])
+                                    {
+                                        rotate([0.0, 90.0, 0.0])
+                                        {
+                                            rotate([0.0, 0.0, 0.0])
+                                            {
+                                                linear_extrude(height = 31.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                                {
+                                                    scale([5.0, 5.0])
+                                                    {
+                                                        M196();
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                translate([-15.0, 15.0, 40.0])
+                                {
+                                    rotate([0.0, 0.0, 0.0])
+                                    {
+                                        rotate([0.0, 0.0, 0.0])
+                                        {
+                                            rotate([90.0, 0.0, 0.0])
+                                            {
+                                                linear_extrude(height = 31.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                                {
+                                                    scale([5.0, 5.0])
+                                                    {
+                                                        M196();
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            translate([-15.0, -15.0, 40.0])
                             {
                                 rotate([0.0, 0.0, 0.0])
                                 {
@@ -38,33 +79,14 @@ difference()
                                     }
                                 }
                             }
-                            translate([-15.0, 15.0, 40.0])
-                            {
-                                rotate([0.0, 0.0, 0.0])
-                                {
-                                    rotate([0.0, 0.0, 0.0])
-                                    {
-                                        rotate([90.0, 0.0, 0.0])
-                                        {
-                                            linear_extrude(height = 31.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
-                                            {
-                                                scale([5.0, 5.0])
-                                                {
-                                                    M196();
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
                         }
-                        translate([-15.0, -15.0, 40.0])
+                        translate([15.0, 15.0, 40.0])
                         {
                             rotate([0.0, 0.0, 0.0])
                             {
-                                rotate([0.0, 90.0, 0.0])
+                                rotate([0.0, 0.0, 0.0])
                                 {
-                                    rotate([0.0, 0.0, 0.0])
+                                    rotate([90.0, 0.0, 0.0])
                                     {
                                         linear_extrude(height = 31.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
                                         {
@@ -78,19 +100,230 @@ difference()
                             }
                         }
                     }
-                    translate([15.0, 15.0, 40.0])
+                }
+                translate([0.0, 0.0, 78.0])
+                {
+                    union()
+                    {
+                        union()
+                        {
+                            rotate([0.0, 0.0, 180.0])
+                            {
+                                rotate([0.0, 0.0, 0.0])
+                                {
+                                    rotate([0.0, 0.0, 0.0])
+                                    {
+                                        union()
+                                        {
+                                            translate([-13.0, 13.0, 2.0])
+                                            {
+                                                rotate([0.0, 0.0, 0.0])
+                                                {
+                                                    rotate([0.0, 90.0, 0.0])
+                                                    {
+                                                        rotate([0.0, 0.0, 0.0])
+                                                        {
+                                                            linear_extrude(height = 26.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                                            {
+                                                                scale([4.0, 4.0])
+                                                                {
+                                                                    M196();
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            translate([-13.0, 13.0, 0.0])
+                                            {
+                                                translate([0.0, 0.0, 2.0])
+                                                {
+                                                    scale([4.0, 4.0, 4.0])
+                                                    {
+                                                        rotate_extrude(angle = 360.0, $fn = 128)
+                                                        {
+                                                            M197();
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            rotate([0.0, 0.0, 270.0])
+                            {
+                                rotate([0.0, 0.0, 0.0])
+                                {
+                                    rotate([0.0, 0.0, 0.0])
+                                    {
+                                        union()
+                                        {
+                                            translate([-13.0, 13.0, 2.0])
+                                            {
+                                                rotate([0.0, 0.0, 0.0])
+                                                {
+                                                    rotate([0.0, 90.0, 0.0])
+                                                    {
+                                                        rotate([0.0, 0.0, 0.0])
+                                                        {
+                                                            linear_extrude(height = 26.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                                            {
+                                                                scale([4.0, 4.0])
+                                                                {
+                                                                    M196();
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            translate([-13.0, 13.0, 0.0])
+                                            {
+                                                translate([0.0, 0.0, 2.0])
+                                                {
+                                                    scale([4.0, 4.0, 4.0])
+                                                    {
+                                                        rotate_extrude(angle = 360.0, $fn = 128)
+                                                        {
+                                                            M197();
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            rotate([0.0, 0.0, 360.0])
+                            {
+                                rotate([0.0, 0.0, 0.0])
+                                {
+                                    rotate([0.0, 0.0, 0.0])
+                                    {
+                                        union()
+                                        {
+                                            translate([-13.0, 13.0, 2.0])
+                                            {
+                                                rotate([0.0, 0.0, 0.0])
+                                                {
+                                                    rotate([0.0, 90.0, 0.0])
+                                                    {
+                                                        rotate([0.0, 0.0, 0.0])
+                                                        {
+                                                            linear_extrude(height = 26.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                                            {
+                                                                scale([4.0, 4.0])
+                                                                {
+                                                                    M196();
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            translate([-13.0, 13.0, 0.0])
+                                            {
+                                                translate([0.0, 0.0, 2.0])
+                                                {
+                                                    scale([4.0, 4.0, 4.0])
+                                                    {
+                                                        rotate_extrude(angle = 360.0, $fn = 128)
+                                                        {
+                                                            M197();
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            rotate([0.0, 0.0, 450.0])
+                            {
+                                rotate([0.0, 0.0, 0.0])
+                                {
+                                    rotate([0.0, 0.0, 0.0])
+                                    {
+                                        union()
+                                        {
+                                            translate([-13.0, 13.0, 2.0])
+                                            {
+                                                rotate([0.0, 0.0, 0.0])
+                                                {
+                                                    rotate([0.0, 90.0, 0.0])
+                                                    {
+                                                        rotate([0.0, 0.0, 0.0])
+                                                        {
+                                                            linear_extrude(height = 26.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                                            {
+                                                                scale([4.0, 4.0])
+                                                                {
+                                                                    M196();
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            translate([-13.0, 13.0, 0.0])
+                                            {
+                                                translate([0.0, 0.0, 2.0])
+                                                {
+                                                    scale([4.0, 4.0, 4.0])
+                                                    {
+                                                        rotate_extrude(angle = 360.0, $fn = 128)
+                                                        {
+                                                            M197();
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        linear_extrude(height = 4.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                        {
+                            scale([26.0, 26.0])
+                            {
+                                M8();
+                            }
+                        }
+                    }
+                }
+            }
+            union()
+            {
+                rotate([0.0, 0.0, 0.0])
+                {
+                    rotate([0.0, 0.0, 0.0])
                     {
                         rotate([0.0, 0.0, 0.0])
                         {
-                            rotate([0.0, 0.0, 0.0])
+                            translate([13.0, 13.0, -1.0])
                             {
-                                rotate([90.0, 0.0, 0.0])
+                                difference()
                                 {
-                                    linear_extrude(height = 31.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                    translate([1.0, 1.0, 0.0])
                                     {
-                                        scale([5.0, 5.0])
+                                        linear_extrude(height = 160.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
                                         {
-                                            M196();
+                                            scale([3.0, 3.0])
+                                            {
+                                                M8();
+                                            }
+                                        }
+                                    }
+                                    translate([0.0, 0.0, -1.0])
+                                    {
+                                        linear_extrude(height = 162.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                        {
+                                            scale([4.0, 4.0])
+                                            {
+                                                M196();
+                                            }
                                         }
                                     }
                                 }
@@ -98,181 +331,40 @@ difference()
                         }
                     }
                 }
-            }
-            translate([0.0, 0.0, 78.0])
-            {
-                union()
+                rotate([0.0, 0.0, 90.0])
                 {
-                    union()
+                    rotate([0.0, 0.0, 0.0])
                     {
-                        rotate([0.0, 0.0, 180.0])
+                        rotate([0.0, 0.0, 0.0])
                         {
                             rotate([0.0, 0.0, 0.0])
                             {
                                 rotate([0.0, 0.0, 0.0])
                                 {
-                                    union()
+                                    rotate([0.0, 0.0, 0.0])
                                     {
-                                        translate([-13.0, 13.0, 2.0])
+                                        translate([13.0, 13.0, -1.0])
                                         {
-                                            rotate([0.0, 0.0, 0.0])
+                                            difference()
                                             {
-                                                rotate([0.0, 90.0, 0.0])
+                                                translate([1.0, 1.0, 0.0])
                                                 {
-                                                    rotate([0.0, 0.0, 0.0])
+                                                    linear_extrude(height = 160.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
                                                     {
-                                                        linear_extrude(height = 26.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                                        scale([3.0, 3.0])
                                                         {
-                                                            scale([4.0, 4.0])
-                                                            {
-                                                                M196();
-                                                            }
+                                                            M8();
                                                         }
                                                     }
                                                 }
-                                            }
-                                        }
-                                        translate([-13.0, 13.0, 0.0])
-                                        {
-                                            translate([0.0, 0.0, 2.0])
-                                            {
-                                                scale([4.0, 4.0, 4.0])
+                                                translate([0.0, 0.0, -1.0])
                                                 {
-                                                    rotate_extrude(angle = 360.0, $fn = 128)
+                                                    linear_extrude(height = 162.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
                                                     {
-                                                        M197();
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        rotate([0.0, 0.0, 270.0])
-                        {
-                            rotate([0.0, 0.0, 0.0])
-                            {
-                                rotate([0.0, 0.0, 0.0])
-                                {
-                                    union()
-                                    {
-                                        translate([-13.0, 13.0, 2.0])
-                                        {
-                                            rotate([0.0, 0.0, 0.0])
-                                            {
-                                                rotate([0.0, 90.0, 0.0])
-                                                {
-                                                    rotate([0.0, 0.0, 0.0])
-                                                    {
-                                                        linear_extrude(height = 26.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                                        scale([4.0, 4.0])
                                                         {
-                                                            scale([4.0, 4.0])
-                                                            {
-                                                                M196();
-                                                            }
+                                                            M196();
                                                         }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        translate([-13.0, 13.0, 0.0])
-                                        {
-                                            translate([0.0, 0.0, 2.0])
-                                            {
-                                                scale([4.0, 4.0, 4.0])
-                                                {
-                                                    rotate_extrude(angle = 360.0, $fn = 128)
-                                                    {
-                                                        M197();
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        rotate([0.0, 0.0, 360.0])
-                        {
-                            rotate([0.0, 0.0, 0.0])
-                            {
-                                rotate([0.0, 0.0, 0.0])
-                                {
-                                    union()
-                                    {
-                                        translate([-13.0, 13.0, 2.0])
-                                        {
-                                            rotate([0.0, 0.0, 0.0])
-                                            {
-                                                rotate([0.0, 90.0, 0.0])
-                                                {
-                                                    rotate([0.0, 0.0, 0.0])
-                                                    {
-                                                        linear_extrude(height = 26.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
-                                                        {
-                                                            scale([4.0, 4.0])
-                                                            {
-                                                                M196();
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        translate([-13.0, 13.0, 0.0])
-                                        {
-                                            translate([0.0, 0.0, 2.0])
-                                            {
-                                                scale([4.0, 4.0, 4.0])
-                                                {
-                                                    rotate_extrude(angle = 360.0, $fn = 128)
-                                                    {
-                                                        M197();
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        rotate([0.0, 0.0, 450.0])
-                        {
-                            rotate([0.0, 0.0, 0.0])
-                            {
-                                rotate([0.0, 0.0, 0.0])
-                                {
-                                    union()
-                                    {
-                                        translate([-13.0, 13.0, 2.0])
-                                        {
-                                            rotate([0.0, 0.0, 0.0])
-                                            {
-                                                rotate([0.0, 90.0, 0.0])
-                                                {
-                                                    rotate([0.0, 0.0, 0.0])
-                                                    {
-                                                        linear_extrude(height = 26.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
-                                                        {
-                                                            scale([4.0, 4.0])
-                                                            {
-                                                                M196();
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                        translate([-13.0, 13.0, 0.0])
-                                        {
-                                            translate([0.0, 0.0, 2.0])
-                                            {
-                                                scale([4.0, 4.0, 4.0])
-                                                {
-                                                    rotate_extrude(angle = 360.0, $fn = 128)
-                                                    {
-                                                        M197();
                                                     }
                                                 }
                                             }
@@ -282,11 +374,119 @@ difference()
                             }
                         }
                     }
-                    linear_extrude(height = 4.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                }
+                rotate([0.0, 0.0, 180.0])
+                {
+                    rotate([0.0, 0.0, 0.0])
                     {
-                        scale([26.0, 26.0])
+                        rotate([0.0, 0.0, 0.0])
                         {
-                            M8();
+                            rotate([0.0, 0.0, 90.0])
+                            {
+                                rotate([0.0, 0.0, 0.0])
+                                {
+                                    rotate([0.0, 0.0, 0.0])
+                                    {
+                                        rotate([0.0, 0.0, 0.0])
+                                        {
+                                            rotate([0.0, 0.0, 0.0])
+                                            {
+                                                rotate([0.0, 0.0, 0.0])
+                                                {
+                                                    translate([13.0, 13.0, -1.0])
+                                                    {
+                                                        difference()
+                                                        {
+                                                            translate([1.0, 1.0, 0.0])
+                                                            {
+                                                                linear_extrude(height = 160.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                                                {
+                                                                    scale([3.0, 3.0])
+                                                                    {
+                                                                        M8();
+                                                                    }
+                                                                }
+                                                            }
+                                                            translate([0.0, 0.0, -1.0])
+                                                            {
+                                                                linear_extrude(height = 162.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                                                {
+                                                                    scale([4.0, 4.0])
+                                                                    {
+                                                                        M196();
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                rotate([0.0, 0.0, 270.0])
+                {
+                    rotate([0.0, 0.0, 0.0])
+                    {
+                        rotate([0.0, 0.0, 0.0])
+                        {
+                            rotate([0.0, 0.0, 180.0])
+                            {
+                                rotate([0.0, 0.0, 0.0])
+                                {
+                                    rotate([0.0, 0.0, 0.0])
+                                    {
+                                        rotate([0.0, 0.0, 90.0])
+                                        {
+                                            rotate([0.0, 0.0, 0.0])
+                                            {
+                                                rotate([0.0, 0.0, 0.0])
+                                                {
+                                                    rotate([0.0, 0.0, 0.0])
+                                                    {
+                                                        rotate([0.0, 0.0, 0.0])
+                                                        {
+                                                            rotate([0.0, 0.0, 0.0])
+                                                            {
+                                                                translate([13.0, 13.0, -1.0])
+                                                                {
+                                                                    difference()
+                                                                    {
+                                                                        translate([1.0, 1.0, 0.0])
+                                                                        {
+                                                                            linear_extrude(height = 160.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                                                            {
+                                                                                scale([3.0, 3.0])
+                                                                                {
+                                                                                    M8();
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        translate([0.0, 0.0, -1.0])
+                                                                        {
+                                                                            linear_extrude(height = 162.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
+                                                                            {
+                                                                                scale([4.0, 4.0])
+                                                                                {
+                                                                                    M196();
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }

@@ -35,19 +35,20 @@ public class SquarePieces {
         Geometry3D sqaure = csg.box3D(brickSize,brickSize,height,false);
         Geometry3D indent = createIndent(csg);
 
-        Geometry3D indentSqaure = csg.difference3D(sqaure,indent);
+        Geometry3D indentSquare = csg.difference3D(sqaure,indent);
 
-        Geometry3D egde = roundedEdgde(csg);
+        Geometry3D edge = roundTop(csg);
 
         Geometry3D cutout = cutout(csg);
 
 
-        indentSqaure = csg.union3D(indentSqaure,egde);
-       // Geometry3D sqaureRoundEdge = csg.difference3D(indentSqaure,cutout);
+        indentSquare = csg.union3D(indentSquare,edge);
+
+        Geometry3D squareRoundTop = csg.difference3D(indentSquare,cutout);
 
         Geometry3D hole = csg.flatRing3D(0,18,12,128,false);
         Geometry3D holeMoved = csg.translate3D(0,0,height-8).transform(hole);
-        Geometry3D finalSqaure = csg.difference3D(indentSqaure,holeMoved);
+        Geometry3D finalSqaure = csg.difference3D(squareRoundTop,holeMoved);
 
 
         Geometry3D magnet = magnetSpace(csg);
@@ -66,9 +67,12 @@ public class SquarePieces {
         Geometry3D magnet = magnetSpace(csg);
         Geometry3D finalWMagnet = csg.difference3D(sqaure,magnet);
 
-        Geometry3D egde = roundedEdgde(csg);
+        Geometry3D edge = roundTop(csg);
+        Geometry3D cutout = cutout(csg);
 
-        Geometry3D finalSqaure = csg.union3D(finalWMagnet,egde);
+        Geometry3D cutoutSquare = csg.difference3D(finalWMagnet,cutout);
+
+        Geometry3D finalSqaure = csg.union3D(cutoutSquare,edge);
 
         return finalSqaure;
     }
@@ -96,7 +100,7 @@ public class SquarePieces {
         return cylinderMerge3;
     }
 
-    public Geometry3D roundedEdgde(JavaCSG csg){
+    public Geometry3D roundTop(JavaCSG csg){
             ArrayList<Geometry3D> edgeArray = new ArrayList<>();
             double y = (brickSize/2)-2;
             double x = (-brickSize/2)+2;
@@ -123,10 +127,10 @@ public class SquarePieces {
             Geometry3D fuseEdge = csg.union3D(edge,box);
 
 
-            Geometry3D finalEdge = csg.translate3D(0,0,height-2).transform(fuseEdge);
+            Geometry3D roundedTop = csg.translate3D(0,0,height-2).transform(fuseEdge);
 
 
-            return finalEdge;
+            return roundedTop;
     }
 
     public Geometry3D magnetSpace(JavaCSG csg){
@@ -138,17 +142,21 @@ public class SquarePieces {
 
     public Geometry3D cutout(JavaCSG csg) {
         ArrayList<Geometry3D> cutoutArray = new ArrayList<>();
-        double zAngle = 90;
+        double zAngle = 0;
+        Geometry3D box = csg.box3D(3,3,height*2,false);
+        box = csg.translate3D(1,1,0).transform(box);
 
-        Geometry3D cylinder = csg.cylinder3D(4, height+2, 128, false);
-        cylinder = csg.translate3D(brickSize / 2 - 1, brickSize / 2 - 1, 0).transform(cylinder);
-        Geometry3D square = createSqaurePieceNoHole(csg, height);
+        Geometry3D cyl = csg.cylinder3D(4,height*2+2,128,false);
+        cyl = csg.translate3D(0,0,-1).transform(cyl);
+
+        Geometry3D cutout = csg.difference3D(box,cyl);
+        cutout = csg.translate3D(brickSize/2-2,brickSize/2-2,-1).transform(cutout);
 
         for (int i = 1; i < 5; i++) {
-            Geometry3D cutout = csg.difference3D(cylinder, square);
             cutout = csg.rotate3D(csg.degrees(0), csg.degrees(0), csg.degrees(zAngle)).transform(cutout);
-            zAngle += 90;
+
             cutoutArray.add(cutout);
+            zAngle += 90;
         }
         Geometry3D finalCutout = csg.union3D(cutoutArray);
 
