@@ -4,7 +4,6 @@ import org.abstractica.javacsg.Geometry2D;
 import org.abstractica.javacsg.Geometry3D;
 import org.abstractica.javacsg.JavaCSG;
 
-import java.lang.management.ManagementFactory;
 import java.util.ArrayList;
 
 public class Board {
@@ -63,24 +62,26 @@ public class Board {
         Geometry3D ring3DTop = csg.translate3D(0,0,height-gamePieceHeight).transform(ring3D);
 
         Geometry3D board = csg.difference3D(startBoard,ring3DTop);
+        Geometry3D row = createRow(csg);
 
-        for (int i = 1; i < 5; i++){
-            Geometry3D row = createRow(csg);
-            Geometry3D rowMoved = csg.translate3D(0,(-(brickSize+5))*i,0).transform(row);
-            board = csg.difference3D(board, rowMoved);
+        board = csg.difference3D(board,row);
 
-            boardPieces.add(board);
+        for (int i = 1; i < 4; i++){
+            Geometry3D row1 = createRow(csg);
+            Geometry3D rowMoved = csg.translate3D(0,(-(brickSize+5))*i,0).transform(row1);
+
+            boardPieces.add(rowMoved);
         }
 
-        Geometry3D board3D = csg.union3D(boardPieces);
+        Geometry3D board3D = csg.difference3D(board,boardPieces);
 
-        Geometry3D indent = createBoardIndent(csg);
-        Geometry3D finalBoard = csg.union3D(board3D, indent);
+        Geometry3D edge = createBoardEdge(csg);
+        Geometry3D finalBoard = csg.union3D(board3D, edge);
 
         return finalBoard;
     }
 
-    public Geometry3D createBoardIndent(JavaCSG csg){
+    public Geometry3D createBoardEdge(JavaCSG csg){
         ArrayList<Geometry3D> edgeArray = new ArrayList<>();
         double z = height/2;
         double y = boardSize/2;
