@@ -114,6 +114,4 @@ public class Board {
 
         return finalMagnet1;
     }
-
-
 }
