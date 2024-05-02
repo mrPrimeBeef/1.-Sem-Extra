@@ -23,6 +23,8 @@ public class Main {
         Geometry3D cylindricalResultBigHole  = cylindricalPiecesBig.getBigCylindricalPieceHole(csg);
         Geometry3D boardResult = board.getBoard(csg);
 
+        Geometry3D circle = board.createBoardIndent(csg);
+
         csg.view(boardResult,0);
         csg.view(sqaureResultSmallNoHole,1);
         csg.view(sqaureResultSmallHole,2);
@@ -33,6 +35,8 @@ public class Main {
         csg.view(cylindricalResultBigHole,7);
         csg.view(cylindricalResultBigNoHole,8);
 
+
+        csg.view(circle,9);
 
 
     }
