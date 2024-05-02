@@ -63,8 +63,6 @@ public class cylindricalPieces {
         Geometry3D ring3D = csg.rotateExtrude(csg.rotations(1),128,ringMoved);
         Geometry3D ring3DMoved = csg.translate3D(0,0,indentHeight).transform(ring3D);
 
-
-
         return ring3DMoved;
     }
 
@@ -74,5 +72,4 @@ public class cylindricalPieces {
 
         return finalMagnet1;
     }
-
 }

@@ -87,5 +87,4 @@ public class SquarePieces {
 
         return finalMagnet1;
     }
-
 }
