@@ -55,28 +55,27 @@ public class Board {
 
 
     public Geometry3D createBoard(JavaCSG csg) {
-        Geometry3D board = csg.box3D(boardSize,boardSize,height,false);
+        ArrayList<Geometry3D> boardPieces = new ArrayList<>();
+
+        Geometry3D startBoard = csg.box3D(boardSize,boardSize,height,false);
         Geometry2D ring2D = csg.ring2D(ringSize - 10,ringSize,128);
         Geometry3D ring3D = csg.linearExtrude(gamePieceHeight+1,false,ring2D);
         Geometry3D ring3DTop = csg.translate3D(0,0,height-gamePieceHeight).transform(ring3D);
 
-        Geometry3D board1 = csg.difference3D(board,ring3DTop);
+        Geometry3D board = csg.difference3D(startBoard,ring3DTop);
 
-        Geometry3D row1 = createRow(csg);
-        Geometry3D board2 = csg.difference3D(board1, row1);
+        for (int i = 1; i < 5; i++){
+            Geometry3D row = createRow(csg);
+            Geometry3D rowMoved = csg.translate3D(0,(-(brickSize+5))*i,0).transform(row);
+            board = csg.difference3D(board, rowMoved);
 
-        Geometry3D row2 = csg.translate3D(0,-(brickSize+5)*1,0).transform(row1);
-        Geometry3D board3 = csg.difference3D(board2, row2);
+            boardPieces.add(board);
+        }
 
-        Geometry3D row3 = csg.translate3D(0,-(brickSize+5)*2,0).transform(row1);
-        Geometry3D board4 = csg.difference3D(board3, row3);
-
-        Geometry3D row4 = csg.translate3D(0,-(brickSize+5)*3,0).transform(row1);
-
-        Geometry3D board5 = csg.difference3D(board4, row4);
+        Geometry3D board3D = csg.union3D(boardPieces);
 
         Geometry3D indent = createBoardIndent(csg);
-        Geometry3D finalBoard = csg.union3D(board5, indent);
+        Geometry3D finalBoard = csg.union3D(board3D, indent);
 
         return finalBoard;
     }
