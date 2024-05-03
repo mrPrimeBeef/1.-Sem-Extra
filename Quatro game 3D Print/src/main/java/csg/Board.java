@@ -28,7 +28,6 @@ public class Board {
     }
 
     public Geometry3D createRow(JavaCSG csg){
-
         ArrayList<Geometry3D> row = new ArrayList<Geometry3D>();
         double moveBrick = brickSize + 3;
         double y = 57;
@@ -43,11 +42,20 @@ public class Board {
 
             Geometry3D extrudCircleMoved = csg.translate3D(x+(moveBrick*i),y,6.5).transform(circleWMagnet);
 
-            row.add(extrudCircleMoved);
+            for (int j = 1; j < 5; j++){
+
+                Geometry3D rowMoved = csg.translate3D(0,(-(brickSize+5))*j,0).transform(extrudCircleMoved);
+
+                row.add(rowMoved);
+            }
 
         }
 
         Geometry3D finalRow = csg.union3D(row);
+
+        finalRow = csg.rotate3DZ(csg.degrees(45)).transform(finalRow);
+
+        finalRow = csg.translate3D(-brickSize*0.8,brickSize*0.8,0).transform(finalRow);
 
         return finalRow;
     }
@@ -66,17 +74,8 @@ public class Board {
 
         board = csg.difference3D(board,row);
 
-        for (int i = 1; i < 4; i++){
-            Geometry3D row1 = createRow(csg);
-            Geometry3D rowMoved = csg.translate3D(0,(-(brickSize+5))*i,0).transform(row1);
-
-            boardPieces.add(rowMoved);
-        }
-
-        Geometry3D board3D = csg.difference3D(board,boardPieces);
-
         Geometry3D edge = createBoardEdge(csg);
-        Geometry3D finalBoard = csg.union3D(board3D, edge);
+        Geometry3D finalBoard = csg.union3D(board, edge);
 
         return finalBoard;
     }
