@@ -42,6 +42,7 @@ public class Board {
 
             Geometry3D extrudCircleMoved = csg.translate3D(x+(moveBrick*i),y,6.5).transform(circleWMagnet);
 
+
             for (int j = 1; j < 5; j++){
 
                 Geometry3D rowMoved = csg.translate3D(0,(-(brickSize+5))*j,0).transform(extrudCircleMoved);
@@ -62,7 +63,6 @@ public class Board {
 
 
     public Geometry3D createBoard(JavaCSG csg) {
-        ArrayList<Geometry3D> boardPieces = new ArrayList<>();
 
         Geometry3D startBoard = csg.box3D(boardSize,boardSize,height,false);
         Geometry2D ring2D = csg.ring2D(ringSize - 10,ringSize,128);
@@ -108,9 +108,9 @@ public class Board {
     }
 
     public Geometry3D magnetSpace(JavaCSG csg){
-        Geometry3D finalMagnet = csg.box3D(4.76,9.80,2.95,false);
-        Geometry3D finalMagnet1 = csg.translate3D(0,0,-2.87).transform(finalMagnet);
+        Geometry3D finalMagnet = csg.cylinder3D(6,2.1,128,false);
+        finalMagnet = csg.translate3D(0,0,-2).transform(finalMagnet);
 
-        return finalMagnet1;
+        return finalMagnet;
     }
 }

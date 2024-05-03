@@ -512,11 +512,11 @@ difference()
     }
     translate([0.0, 0.0, -0.1])
     {
-        linear_extrude(height = 2.95, twist = 0.0, scale = 1.0, slices = 1, center = false)
+        linear_extrude(height = 2.0, twist = 0.0, scale = 1.0, slices = 1, center = false)
         {
-            scale([4.76, 9.8])
+            scale([6.0, 6.0])
             {
-                M8();
+                M196();
             }
         }
     }
