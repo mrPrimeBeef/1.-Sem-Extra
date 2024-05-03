@@ -23,7 +23,7 @@ public class Main {
         Geometry3D cylindricalResultBigHole  = cylindricalPiecesBig.getBigCylindricalPieceHole(csg);
         Geometry3D boardResult = board.getBoard(csg);
 
-        Geometry3D workInProgress = squarePiecesSmall.cutout(csg);
+        Geometry3D workInProgress = cylindricalPiecesSmall.Top(csg);
 
         csg.view(boardResult,0);
         csg.view(sqaureResultSmallNoHole,1);
