@@ -91,7 +91,7 @@ public class cylindricalPieces {
     }
 
     public Geometry3D magnetSpace(JavaCSG csg){
-        Geometry3D finalMagnet = csg.box3D(4.73,9.77,2.88,false);
+        Geometry3D finalMagnet = csg.box3D(4.76,9.80,2.95,false);
         Geometry3D finalMagnet1 = csg.translate3D(0,0,-0.1).transform(finalMagnet);
 
         return finalMagnet1;
