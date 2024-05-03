@@ -4,8 +4,6 @@ import org.abstractica.javacsg.Geometry2D;
 import org.abstractica.javacsg.Geometry3D;
 import org.abstractica.javacsg.JavaCSG;
 
-import java.security.PublicKey;
-
 public class cylindricalPieces {
     private final double brickSize;
     private final double height;
@@ -36,13 +34,21 @@ public class cylindricalPieces {
         Geometry3D cicleCylinder = csg.cylinder3D(brickSize,height,128,false);
         Geometry3D indent = createIndent(csg);
 
-
         Geometry3D indentCylinder = csg.difference3D(cicleCylinder,indent);
 
-        Geometry3D hole = csg.flatRing3D(0,18,10,128,false);
+        Geometry3D top = Top(csg);
+        indentCylinder = csg.union3D(indentCylinder,top);
+
+        Geometry3D magnet = magnetSpace(csg);
+        indentCylinder = csg.difference3D(indentCylinder,magnet);
+
+        Geometry3D hole = csg.flatRing3D(0,18,12,128,false);
         Geometry3D holeMoved = csg.translate3D(0,0,height-8).transform(hole);
-        Geometry3D finalSqaure = csg.difference3D(indentCylinder,holeMoved);
-        return finalSqaure;
+
+        Geometry3D finalCylinder = csg.difference3D(indentCylinder,holeMoved);
+
+
+        return finalCylinder;
     }
 
 
@@ -52,9 +58,27 @@ public class cylindricalPieces {
 
         Geometry3D finalCylinderPiece = csg.difference3D(cylinderePiece,indent);
         Geometry3D magnet = magnetSpace(csg);
-        Geometry3D finalWMagnet = csg.difference3D(finalCylinderPiece,magnet);
+        finalCylinderPiece = csg.difference3D(finalCylinderPiece,magnet);
+        Geometry3D egde = Top(csg);
 
-        return finalWMagnet;
+        finalCylinderPiece = csg.union3D(finalCylinderPiece,egde);
+
+        return finalCylinderPiece;
+    }
+
+    public Geometry3D Top(JavaCSG csg){
+        Geometry2D ring = csg.ring2D(0,4,128);
+        Geometry2D ringMoved = csg.translate2D(brickSize/2-2,0).transform(ring);
+        Geometry3D ring3D = csg.rotateExtrude(csg.rotations(1),128,ringMoved);
+
+        Geometry2D ringFill = csg.ring2D(0,brickSize-4,128);
+        Geometry3D ring3DFill = csg.linearExtrude(2,false,ringFill);
+
+        Geometry3D finalEgde = csg.union3D(ring3D,ring3DFill);
+
+       finalEgde = csg.translate3D(0,0,height).transform(finalEgde);
+
+        return finalEgde;
     }
 
     public Geometry3D createIndent(JavaCSG csg){
@@ -72,4 +96,5 @@ public class cylindricalPieces {
 
         return finalMagnet1;
     }
+
 }
